@@ -429,7 +429,6 @@ function menu()
     if(clicked(button))
     {
         state = game;
-    
     }
     
     menuScreen.renderImage(startScreen);
@@ -795,7 +794,7 @@ function game()
     elevator2.renderImage(cloud);
     escalator.renderImage(cloud);
 
-    ctx.fillText(`Garden Tools: ${score}`, 110, 50);
+    ctx.fillText(`Holy Gardening Water: ${score}`, 170, 35);
     ctx.fillStyle = "black";
     ctx.textAlign = `center`;
     ctx.font = '30px Arial';
