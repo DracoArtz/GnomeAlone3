@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
+    <title>GNOME ALONE</title>
+   
+</head>
+<body>
+    <div>
+        <h2>GNOME ALONE: ON YOUR OWN</h2>
+        <canvas width="800" height="500"></canvas>
+    </div>
+    
+    <div id="instructions">
+        <h2>INSTRUCTIONS</h2>
+        <p>
+           <h3>Controls</h3>
+           <ul>
+            <li>"A" to move left.</li>
+            <li>"D" to move Right.</li>
+            <li>"Space" to jump.</li>
+            <li>Jump to the bottom of a platform and hold space to stick. "A" and "D" to move while stuck.</li>
+           </ul>
+           <h4> Storyline</h4>
+           <p>You are a legendary gnome. The humans have destroyed your precious Garden of Glory, and your gnome subjects who once worshipped you and your garden now belittle you. You must collect four Tools of Gardening to repair the damages and regain your subject's loyalty.</p>
+           <br>
+           <p>Good luck.</p>
+        </p>
+    </div>
+    <div class="hidden">
+        <img src="images/mrt.jpg" alt="Mr T" id="default">
+        <img src="images/Cloud.png" style="display:none;" id="cloud">
+        <img src="images/Gnome.png" style="display:none;" id="gnome">
+        <img src="images/Danger.jpg" style="display:none;" id="danger">
+        <img src="images/startScreen.png" style="display:none;" id="startScreenImg">
+        <img src="images/dirt.jpg" style="display:none;" id="dirt">
+        <img src="images/floor.jpg" style="display:none;" id="floor">
+        <img src="images/winScreen.png" style="display:none;" id="winScreen">
+        <img src="images/loseScreen.png" style="display:none;" id="loseScreen">
+    </div>
+    <!--contains functions and descriptions of commonly used mathmatical functions-->
+    <script src="js/utility.js"></script>
+    <!--controls.js contains the keyboard events and variables for movement-->
+    <script src="js/controls.js"></script>
+    <!--GameObject.js contains the game object class we will use or all objects in the game-->
+    <script src="js/GameObject.js"></script>
+    <!--game.js is the game-->
+    <script src="js/game.js"></script>
+</body>
+</html>
