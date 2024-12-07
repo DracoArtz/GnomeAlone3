@@ -23,6 +23,7 @@ var victoryScreen = document.getElementById("winScreen");
 var defeatScreen = document.getElementById("loseScreen");
 var dirt = document.getElementById("dirt");
 var floor = document.getElementById("floor");
+var wateringCan = document.getElementById("wateringCan");
 
 var score = 0;
 
@@ -46,6 +47,13 @@ var platform5 = new GameObject();
 var platform6 = new GameObject();
 var platform7 = new GameObject();
 var platform8 = new GameObject();
+var platform9 = new GameObject();
+var platform10 = new GameObject();
+var platform11 = new GameObject();
+var platform12 = new GameObject();
+var platform13 = new GameObject();
+var platform14 = new GameObject();
+var platform15 = new GameObject();
 var platforms = [];
 
 var tool = new GameObject();
@@ -56,10 +64,20 @@ var tools = [];
 
 var danger = new GameObject();
 var danger1 = new GameObject();
+var danger2 = new GameObject();
+var danger3 = new GameObject();
+var danger4 = new GameObject();
+var danger5 = new GameObject();
+var danger6 = new GameObject();
+var danger7 = new GameObject();
+var danger8 = new GameObject();
+var danger9 = new GameObject();
 var dangers = [];
 
 var elevator = new GameObject();
+var elevator2 = new GameObject();
 var elevatorUp = false;
+var elevator2Up = false;
 
 var escalator = new GameObject();
 var escalatorMove = false;
@@ -69,7 +87,9 @@ function init()
     state = menu
 
     button.color = 'green';
-    button.y = 400
+    button.y = 400;
+    button.w = 50;
+    button.h = 70;
 
     background.color = 'lightblue';
     background.x = c.y;
@@ -98,7 +118,7 @@ function init()
     avatar.color = `orange`;
     avatar.x = -1500;
     avatar.y = 100;
-    avatar.w = 70;
+    avatar.w = 50;
     avatar.h = 70;
 
     level.x = 0; 
@@ -110,26 +130,18 @@ function init()
     ground.y = c.height - ground.h/2;
     ground.world = level
 
-    wall.h = 1000;
+    wall.h = 3000;
     wall.w = 100;
     wall.color = `#5e2d11`
     wall.x = 2450;
     wall.world = level
 
-    wall2.h = 1000;
+    wall2.h = 3000;
     wall2.w = 100;
     wall2.color = `#5e2d11`
     wall2.x = -1600;
     wall2.y = 100;
     wall2.world = level
-
-    //left wall platform
-    platform2.h = 1000;
-    platform2.w = 100;
-    platform2.color = `#5e2d11`
-    platform2.x = -1600;
-    platform2.y = 100;
-    platform2.world = level
 
     //regular game platforms
     platform.w = 200;
@@ -188,6 +200,62 @@ function init()
     platform8.y = -225;
     platform8.world = level
 
+    platform2.h = 40;
+    platform2.w = 500;
+    platform2.color = `#5e2d11`
+    platform2.x = 900;
+    platform2.y = -225;
+    platform2.world = level
+    
+    platform9.h = 40;
+    platform9.w = 500;
+    platform9.color = `#5e2d11`
+    platform9.x = 900;
+    platform9.y = -500;
+    platform9.world = level
+    
+    platform10.h = 300;
+    platform10.w = 40;
+    platform10.color = `#5e2d11`
+    platform10.x = 650;
+    platform10.y = -630;
+    platform10.world = level
+    
+    platform11.h = 40;
+    platform11.w = 500;
+    platform11.color = `#5e2d11`
+    platform11.x = 1300;
+    platform11.y = -225;
+    platform11.world = level
+    
+    platform12.h = 40;
+    platform12.w = 500;
+    platform12.color = `#5e2d11`
+    platform12.x = 1600;
+    platform12.y = -225;
+    platform12.world = level
+    
+    platform13.h = 40;
+    platform13.w = 500;
+    platform13.color = `#5e2d11`
+    platform13.x = 1900;
+    platform13.y = -225;
+    platform13.world = level
+    
+    platform14.h = 40;
+    platform14.w = 500;
+    platform14.color = `#5e2d11`
+    platform14.x = 2200;
+    platform14.y = -225;
+    platform14.world = level
+    
+    platform15.h = 500;
+    platform15.w = 40;
+    platform15.color = `#5e2d11`
+    platform15.x = 2200;
+    platform15.y = -475;
+    platform15.world = level
+
     platforms[0] = platform;
     platforms[1] = platform1;
     platforms[2] = platform2;
@@ -197,6 +265,13 @@ function init()
     platforms[6] = platform6;
     platforms[7] = platform7;
     platforms[8] = platform8;
+    platforms[9] = platform9;
+    platforms[10] = platform10;
+    platforms[11] = platform11;
+    platforms[12] = platform12;
+    platforms[13] = platform13;
+    platforms[14] = platform14;
+    platforms[15] = platform15;
 
     //elevator
     elevator.w = 200;
@@ -205,6 +280,15 @@ function init()
     elevator.y = 300;
     elevator.color = 'blue';
     elevator.world = level
+
+    elevator2.w = 200;
+    elevator2.h = 100;
+    elevator2.x = 2050;
+    elevator2.y = -300;
+    elevator2.color = 'blue';
+    elevator2.world = level
+   
+    
 
     //escalator
     escalator.w = 200;
@@ -215,32 +299,32 @@ function init()
     escalator.world = level
 
     //collectables
-    tool.w = 40;
+    tool.w = 60;
     tool.h = 40;
     tool.color = `#e5b613`;
     tool.x = -1000
     tool.y = -50
     tool.world = level
     
-    tool1.w = 40;
+    tool1.w = 60;
     tool1.h = 40;
     tool1.color = `#e5b613`;
     tool1.x = -300;
     tool1.y = -300;
     tool1.world = level
 
-    tool2.w = 40;
+    tool2.w = 60;
     tool2.h = 40;
     tool2.color = `#e5b613`;
-    tool2.x = -1000;
-    tool2.y = -50;
+    tool2.x = 800;
+    tool2.y = -550;
     tool2.world = level
 
-    tool3.w = 40;
+    tool3.w = 60;
     tool3.h = 40;
     tool3.color = `#e5b613`;
-    tool3.x = -1000;
-    tool3.y = -50;
+    tool3.x = 2300;
+    tool3.y = -300;
     tool3.world = level
 
     tools[0] = tool;
@@ -262,9 +346,73 @@ function init()
     danger1.x = 200;
     danger1.y = 300;
     danger1.world = level
+    
+    danger2.w = 60;
+    danger2.h = 60;
+    danger2.color = `red`;
+    danger2.x = 800;
+    danger2.y = -275;
+    danger2.world = level
+
+    danger3.w = 60;
+    danger3.h = 60;
+    danger3.color = `red`;
+    danger3.x = 1100;
+    danger3.y = -275;
+    danger3.world = level
+
+    danger4.w = 60;
+    danger4.h = 60;
+    danger4.color = `red`;
+    danger4.x = 950;
+    danger4.y = -450;
+    danger4.world = level
+
+    danger5.w = 60;
+    danger5.h = 60;
+    danger5.color = `red`;
+    danger5.x = -900;
+    danger5.y = 345;
+    danger5.world = level
+   
+    danger6.w = 60;
+    danger6.h = 60;
+    danger6.color = `red`;
+    danger6.x = -750;
+    danger6.y = 100;
+    danger6.world = level
+   
+    danger7.w = 60;
+    danger7.h = 60;
+    danger7.color = `red`;
+    danger7.x = 1300;
+    danger7.y = -275;
+    danger7.world = level
+   
+    danger8.w = 60;
+    danger8.h = 60;
+    danger8.color = `red`;
+    danger8.x = 1600;
+    danger8.y = -275;
+    danger8.world = level
+   
+    danger9.w = 60;
+    danger9.h = 60;
+    danger9.color = `red`;
+    danger9.x = 1750;
+    danger9.y = -275;
+    danger9.world = level
 
     dangers[0] = danger;
     dangers[1] = danger1;
+    dangers[2] = danger2;
+    dangers[3] = danger3;
+    dangers[4] = danger4;
+    dangers[5] = danger5;
+    dangers[6] = danger6;
+    dangers[7] = danger7;
+    dangers[8] = danger8;
+    dangers[9] = danger9;
 
 }
 
@@ -308,15 +456,21 @@ function win()
             tool1.x = -300;
             tool1.y = -300;
         
-            tool2.x = -1000;
-            tool2.y = -50;
+            tool2.x = 800;
+            tool2.y = -550;
 
-            tool3.x = -1000;
-            tool3.y = -50;
+            tool3.x = 2300;
+            tool3.y = -300;
 
             elevator.x = -500;
             elevator.y = 300;
             elevatorUp = false;
+
+            elevator2Up = false;
+            
+            escalator.x = -100;
+            escalator.y = -450;
+            escalatorMove = false;
 
             level.x = 0;
             level.y = 0;
@@ -342,15 +496,21 @@ function lose()
             tool1.x = -300;
             tool1.y = -300;
         
-            tool2.x = -1000;
-            tool2.y = -50;
+            tool2.x = 800;
+            tool2.y = -550;
 
-            tool3.x = -1000;
-            tool3.y = -50;
+            tool3.x = 2300;
+            tool3.y = -300;
 
             elevator.x = -500;
             elevator.y = 300;
             elevatorUp = false;
+
+            elevator2Up = false;
+
+            escalatorMove = false;
+            escalator.x = -100;
+            escalator.y = -450;
 
             level.x = 0;
             level.y = 0;
@@ -403,6 +563,14 @@ function game()
         offset.x--;
     
     }
+
+    while(wall2.isOverPoint(avatar.left()) && avatar.vx <= 0)
+    {
+        avatar.vx = 0;
+        avatar.x++;
+        offset.x++;
+    
+    }
     //elevator
     while(elevator.isOverPoint(avatar.bottom()) && avatar.vy >= 0)
     {
@@ -435,8 +603,6 @@ function game()
     offset.x--;
 
     }
-
-
     if(elevatorUp == true){
         elevator.y --;
     }
@@ -445,6 +611,47 @@ function game()
     }
     if(elevatorUp == false && elevator.y < 300){
         elevator.y ++;
+    }
+
+    while(elevator2.isOverPoint(avatar.bottom()) && avatar.vy >= 0)
+    {
+    avatar.vy = 0;
+    avatar.y--;
+    offset.y--;
+    avatar.canJump = true;
+    elevator2Up = true;
+
+    }
+    while(elevator2.isOverPoint(avatar.top()) && avatar.vy <= 0)
+    {
+    avatar.vy = 0;
+    avatar.y++;
+    offset.y++;
+    avatar.canJump = true;
+    
+    }
+    while(elevator2.isOverPoint(avatar.left()) && avatar.vx <= 0)
+    {
+    avatar.vx = 0;
+    avatar.x++;
+    offset.x++;
+
+    }
+    while(elevator2.isOverPoint(avatar.right()) && avatar.vx >= 0)
+    {
+    avatar.vx = 0;
+    avatar.x--;
+    offset.x--;
+
+    }
+    if(elevator2Up == true){
+        elevator2.y --;
+    }
+    if(elevator2Up == true && elevator2.y <= -600){
+        elevator2Up = false;
+    }
+    if(elevator2Up == false && elevator2.y < -300){
+        elevator2.y ++;
     }
 
     //escalator
@@ -489,7 +696,7 @@ function game()
     
 //collecter
     for(var i = 0; i < tools.length; i++){
-        tools[i].render();
+        tools[i].renderImage(wateringCan);
         if(avatar.overlaps(tools[i])){
             tools[i].y = 2000;
             score += 1;
@@ -557,15 +764,35 @@ function game()
 
     for(var i = 0; i<dangers.length; i++){
         dangers[i].renderImage(lava);
-        if(dangers[i].isOverPoint(avatar))
+        if(dangers[i].isOverPoint(avatar.left()))
+            {
+                state = lose;
+            }
+        }
+    for(var i = 0; i<dangers.length; i++){
+        if(dangers[i].isOverPoint(avatar.top()))
+            {
+                state = lose;
+            }
+        }
+    for(var i = 0; i<dangers.length; i++){
+        if(dangers[i].isOverPoint(avatar.right()))
+            {
+                state = lose;
+            }
+        }
+    for(var i = 0; i<dangers.length; i++){
+        if(dangers[i].isOverPoint(avatar.bottom()))
             {
                 state = lose;
             }
         }
     
     wall.render();
+    wall2.render();
     avatar.renderImage(gnome);
     elevator.renderImage(cloud);
+    elevator2.renderImage(cloud);
     escalator.renderImage(cloud);
 
     ctx.fillText(`Garden Tools: ${score}`, 110, 50);
