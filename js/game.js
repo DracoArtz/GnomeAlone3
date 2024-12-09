@@ -13,6 +13,7 @@ function main()
 //setup
 var state;
 var button = new GameObject();
+var bgm = document.getElementById("music");
 
 //imgs
 var cloud = document.getElementById("cloud");
@@ -437,13 +438,20 @@ function menu()
 
     if(clicked(button))
     {
+        bgm.play();
         state = game;
+       
     }
     
     menuScreen.renderImage(startScreen);
     button.renderImage(gnome);
 
 }
+
+function play() {
+    var audio = document.getElementById("music");
+    audio.play();
+  }
 
 function win()
 {
@@ -533,6 +541,8 @@ function lose()
 
 function game()
 {
+    
+
     background.render();
 
     if(sp == true && avatar.canJump == true)
