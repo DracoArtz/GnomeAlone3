@@ -447,12 +447,6 @@ function menu()
     button.renderImage(gnome);
 
 }
-
-function play() {
-    var audio = document.getElementById("music");
-    audio.play();
-  }
-
 function win()
 {
     winScreen.renderImage(victoryScreen);
@@ -818,6 +812,3 @@ function game()
     ctx.textAlign = `center`;
     ctx.font = '30px Arial';
 }
-
-
-
