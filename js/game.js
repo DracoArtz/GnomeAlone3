@@ -72,6 +72,7 @@ var danger6 = new GameObject();
 var danger7 = new GameObject();
 var danger8 = new GameObject();
 var danger9 = new GameObject();
+var danger10 = new GameObject();
 var dangers = [];
 
 var elevator = new GameObject();
@@ -402,6 +403,13 @@ function init()
     danger9.x = 1750;
     danger9.y = -275;
     danger9.world = level
+    
+    danger10.w = 200;
+    danger10.h = 40;
+    danger10.color = `red`;
+    danger10.x = 2050;
+    danger10.y = -275;
+    danger10.world = level
 
     dangers[0] = danger;
     dangers[1] = danger1;
@@ -413,6 +421,7 @@ function init()
     dangers[7] = danger7;
     dangers[8] = danger8;
     dangers[9] = danger9;
+    dangers[10] = danger10;
 
 }
 
